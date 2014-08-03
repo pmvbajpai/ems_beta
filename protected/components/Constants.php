@@ -16,6 +16,7 @@ class Constants
 	const GENDER = 3; // male and female
 	const RELIGION  = 4; // for religion
 	const RESERVE_CATEGORY = 16; // for Reserve category
+	const RELATIONS	= 18; // for Relations
 	
 	
 	/*For master collection type table*/

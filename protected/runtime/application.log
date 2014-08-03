@@ -1639,3 +1639,13 @@ Stack trace:
 REQUEST_URI=/ems_beta/masters/classMaster
 HTTP_REFERER=http://localhost/ems_beta/masters/subjects
 ---
+2014/08/03 08:57:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "e".' in D:\xampp\php\pear\YII\web\CController.php:483
+Stack trace:
+#0 D:\xampp\php\pear\YII\web\CController.php(270): CController->missingAction('e')
+#1 D:\xampp\php\pear\YII\web\CWebApplication.php(282): CController->run('e')
+#2 D:\xampp\php\pear\YII\web\CWebApplication.php(141): CWebApplication->runController('employee/employ...')
+#3 D:\xampp\php\pear\YII\base\CApplication.php(180): CWebApplication->processRequest()
+#4 D:\xampp\htdocs\ems_beta\index.php(12): CApplication->run()
+#5 {main}
+REQUEST_URI=/ems_beta/employee/employee/e
+---

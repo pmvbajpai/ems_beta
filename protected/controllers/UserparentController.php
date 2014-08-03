@@ -68,19 +68,32 @@ class UserparentController extends Controller
 		}
 		
 		$model=new UserParent;
+		$userDetails = new User;
+		$userRelation = new Userparentassociation;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['UserParent']))
+		if(isset($_POST['UserParent'], $_POST['Userparentassociation']))
 		{
 			$model->attributes=$_POST['UserParent'];
 			if($model->save())
+				
+			{
+				$userRelation->attributes=$_POST['Userparentassociation'];
+				$userRelation->ParentId = $model->ParentId;
+				$userRelation->UserId = $_POST['User']['UserId'];
+				if($userRelation->save())
+			
 				$this->redirect(array('view','id'=>$model->ParentId));
 		}
-
+		
+		}
+		
 		$this->render('create',array(
-			'model'=>$model,
+			'model'				=> $model,
+			'userDetails'		=> $userDetails,
+			'userRelation'		=> $userRelation, 
 		));
 	}
 

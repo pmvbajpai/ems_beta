@@ -14,7 +14,7 @@ class EmsUser extends User
 	 * @param array $data
 	 * @return int studentId
 	 */
-	public function saveUser($data, $user_type)
+	public function saveUser($data)
 	{
 		$userId = null;
 		$data['Password'] = md5($data['Password']);

@@ -1,15 +1,15 @@
 10
 
 dir
-53
+55
 file:///D:/SVN/ca-ems/protected
 file:///D:/SVN/ca-ems
 
 
 
-2014-08-02T07:22:06.912578Z
-53
-apanchal
+2014-08-03T07:47:24.835630Z
+55
+adwivedi
 has-props
 
 
@@ -25,12 +25,6 @@ has-props
 
 
 5ed3082e-c714-f643-b7db-8e5d53533bc2
-
-runtime
-dir
-
-models
-dir
 
 yiic.php
 file
@@ -66,7 +60,19 @@ vivek
 
 178
 
+models
+dir
+
+runtime
+dir
+
 components
+dir
+
+vendor
+dir
+
+views
 dir
 
 yiic
@@ -103,16 +109,13 @@ vivek
 
 71
 
-views
-dir
-
-vendor
-dir
-
 extensions
 dir
 
 commands
+dir
+
+tests
 dir
 
 yiic.bat
@@ -148,9 +151,6 @@ vivek
 
 
 380
-
-tests
-dir
 
 config
 dir

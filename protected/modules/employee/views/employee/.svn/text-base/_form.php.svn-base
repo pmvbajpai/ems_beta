@@ -23,17 +23,24 @@ $datePicker = Yii::app()->params['constants']['date_picker_format'];
 )); ?>
 
 	<?php
-		$employeeType = Emsmastercollection::getMasterCollectionByCollectionTypeId(Constants::EMPLOYEE_TYPE);
 		$gender = Emsmastercollection::getMasterCollectionByCollectionTypeId(Constants::GENDER);
+		$religion = Emsmastercollection::getMasterCollectionByCollectionTypeId(Constants::RELIGION);
+		$reservedCategory = Emsmastercollection::getMasterCollectionByCollectionTypeId(Constants::RESERVE_CATEGORY);
 	?>
 	
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'UserId'); ?>
-		<?php echo $form->textField($model,'UserId'); ?>
-		<?php echo $form->error($model,'UserId'); ?>
+		<?php echo $form->labelEx($userDetails,'UserName'); ?>
+		<?php echo $form->textField($userDetails,'UserName'); ?>
+		<?php echo $form->error($userDetails,'UserName'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($userDetails,'Password'); ?>
+		<?php echo $form->textField($userDetails,'Password',array('size'=>25,'maxlength'=>25, 'value' => 'abc@123')); ?>
+		<?php echo $form->error($userDetails,'Password'); ?>
 	</div>
 
 	<div class="row">
@@ -99,7 +106,7 @@ $datePicker = Yii::app()->params['constants']['date_picker_format'];
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'Gender'); ?>
-		<?php echo $form->radioButtonList($employeeDetails,'Gender', CHtml::listData($gender, 'MasterCollectionId', 'CollectionName'),
+		<?php echo $form->radioButtonList($employeeDetails,'Gender', CHtml::listData($gender, 'id', 'name'),
 											array('labelOptions'=>array('style'=>'display:inline'), 'separator' => "&nbsp;")
 										); ?>
 		<?php echo $form->error($employeeDetails,'Gender'); ?>
@@ -107,13 +114,13 @@ $datePicker = Yii::app()->params['constants']['date_picker_format'];
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'Religion'); ?>
-		<?php echo $form->textField($employeeDetails,'Religion'); ?>
+		<?php echo $form->dropDownList($employeeDetails,'Religion', CHtml::listData($religion, 'id', 'name')); ?>
 		<?php echo $form->error($employeeDetails,'Religion'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'Category'); ?>
-		<?php echo $form->textField($employeeDetails,'Category'); ?>
+		<?php echo $form->dropDownList($employeeDetails,'Category', CHtml::listData($reservedCategory, 'id', 'name')); ?>
 		<?php echo $form->error($employeeDetails,'Category'); ?>
 	</div>
 
@@ -131,13 +138,13 @@ $datePicker = Yii::app()->params['constants']['date_picker_format'];
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'CurrentSuburbId'); ?>
-		<?php echo $form->textField($employeeDetails,'CurrentSuburbId'); ?>
+		<?php echo $form->dropDownList($employeeDetails, 'CurrentSuburbId',array(''=> 'Select Type') + CHtml::listData(Pickuppoint::model()->findAll(), 'PickupPointId', 'PickupPointName')); ?>
 		<?php echo $form->error($employeeDetails,'CurrentSuburbId'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'CurrentCityId'); ?>
-		<?php echo $form->textField($employeeDetails,'CurrentCityId'); ?>
+		<?php echo $form->dropDownList($employeeDetails,'CurrentCityId',CHtml::listData(City::model()->findAll(), 'CityId', 'CityName')); ?>
 		<?php echo $form->error($employeeDetails,'CurrentCityId'); ?>
 	</div>
 
@@ -149,13 +156,13 @@ $datePicker = Yii::app()->params['constants']['date_picker_format'];
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'CurrentStateId'); ?>
-		<?php echo $form->textField($employeeDetails,'CurrentStateId'); ?>
+		<?php echo $form->dropDownList($employeeDetails,'CurrentStateId',CHtml::listData(State::model()->findAll(), 'StateId', 'StateName')); ?>
 		<?php echo $form->error($employeeDetails,'CurrentStateId'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'CurrentCountryId'); ?>
-		<?php echo $form->textField($employeeDetails,'CurrentCountryId'); ?>
+		<?php echo $form->dropDownList($employeeDetails,'CurrentCountryId',CHtml::listData(Country::model()->findAll(), 'CountryId', 'CountryName')); ?>
 		<?php echo $form->error($employeeDetails,'CurrentCountryId'); ?>
 	</div>
 
@@ -173,25 +180,25 @@ $datePicker = Yii::app()->params['constants']['date_picker_format'];
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'PermaSuburbId'); ?>
-		<?php echo $form->textField($employeeDetails,'PermaSuburbId'); ?>
+		<?php echo $form->dropDownList($employeeDetails, 'PermaSuburbId',array(''=> 'Select Type') + CHtml::listData(Pickuppoint::model()->findAll(), 'PickupPointId', 'PickupPointName')); ?>
 		<?php echo $form->error($employeeDetails,'PermaSuburbId'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'PermaCityId'); ?>
-		<?php echo $form->textField($employeeDetails,'PermaCityId'); ?>
+		<?php echo $form->dropDownList($employeeDetails,'PermaCityId',CHtml::listData(City::model()->findAll(), 'CityId', 'CityName')); ?>
 		<?php echo $form->error($employeeDetails,'PermaCityId'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'PermaStateId'); ?>
-		<?php echo $form->textField($employeeDetails,'PermaStateId'); ?>
+		<?php echo $form->dropDownList($employeeDetails,'PermaStateId',CHtml::listData(State::model()->findAll(), 'StateId', 'StateName')); ?>
 		<?php echo $form->error($employeeDetails,'PermaStateId'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($employeeDetails,'PermaCountryId'); ?>
-		<?php echo $form->textField($employeeDetails,'PermaCountryId'); ?>
+		<?php echo $form->dropDownList($employeeDetails,'PermaCountryId',CHtml::listData(Country::model()->findAll(), 'CountryId', 'CountryName')); ?>
 		<?php echo $form->error($employeeDetails,'PermaCountryId'); ?>
 	</div>
 
@@ -292,6 +299,7 @@ $datePicker = Yii::app()->params['constants']['date_picker_format'];
 		<?php echo $form->labelEx($employeeDetails,'Status'); ?>
 		<?php echo $form->checkBox($employeeDetails,'Status' ,array('value'=>1,'uncheckValue'=>0,'checked'=>'checked')); ?>
 		<?php echo $form->error($employeeDetails,'Status'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

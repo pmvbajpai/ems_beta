@@ -93,7 +93,7 @@ class StudentController extends Controller
 					
 					if($studentDetails->save())
 					{
-						$this->redirect(array('view','id'=>$model->StudentId));
+						$this->redirect(array('view','id'=>$student->StudentId));
 					}
 				}
 				

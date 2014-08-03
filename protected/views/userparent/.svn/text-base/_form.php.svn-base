@@ -21,9 +21,26 @@
 )); 
 ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<?php
+		$gender = Emsmastercollection::getMasterCollectionByCollectionTypeId(Constants::GENDER);
+		$religion = Emsmastercollection::getMasterCollectionByCollectionTypeId(Constants::RELIGION);
+		$reservedCategory = Emsmastercollection::getMasterCollectionByCollectionTypeId(Constants::RESERVE_CATEGORY);
+		$relations = Emsmastercollection::getMasterCollectionByCollectionTypeId(Constants::RELATIONS);
+	?>
 
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 	
+	<div class="row">
+		<?php echo $form->labelEx($userRelation,'RelationId'); ?>
+		<?php echo $form->dropDownList($userRelation, 'RelationId',array(''=> 'Select Type') + CHtml::listData($relations, 'id', 'name')); ?>
+		<?php echo $form->error($userRelation,'RelationId'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($userDetails,'UserId'); ?>
+		<?php echo $form->textField($userDetails,'UserId',array('size'=>25,'maxlength'=>25, 'value' => '29')); ?>
+		<?php echo $form->error($userDetails,'UserId'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'FirstName'); ?>
@@ -45,19 +62,21 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Gender'); ?>
-		<?php echo $form->textField($model,'Gender'); ?>
+		<?php echo $form->radioButtonList($model,'Gender', CHtml::listData($gender, 'id', 'name'),
+											array('labelOptions'=>array('style'=>'display:inline'), 'separator' => "&nbsp;")
+										); ?>
 		<?php echo $form->error($model,'Gender'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Religion'); ?>
-		<?php echo $form->textField($model,'Religion'); ?>
+		<?php echo $form->dropDownList($model,'Religion', CHtml::listData($religion, 'id', 'name')); ?>
 		<?php echo $form->error($model,'Religion'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Category'); ?>
-		<?php echo $form->textField($model,'Category'); ?>
+		<?php echo $form->dropDownList($model,'Category', CHtml::listData($reservedCategory, 'id', 'name')); ?>
 		<?php echo $form->error($model,'Category'); ?>
 	</div>
 
@@ -75,13 +94,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'CurrentSuburbId'); ?>
-		<?php echo $form->textField($model,'CurrentSuburbId'); ?>
+		<?php echo $form->dropDownList($model, 'CurrentSuburbId',array(''=> 'Select Type') + CHtml::listData(Pickuppoint::model()->findAll(), 'PickupPointId', 'PickupPointName')); ?>
 		<?php echo $form->error($model,'CurrentSuburbId'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'CurrentCityId'); ?>
-		<?php echo $form->textField($model,'CurrentCityId'); ?>
+		<?php echo $form->dropDownList($model,'CurrentCityId',CHtml::listData(City::model()->findAll(), 'CityId', 'CityName')); ?>
 		<?php echo $form->error($model,'CurrentCityId'); ?>
 	</div>
 
@@ -93,13 +112,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'CurrentStateId'); ?>
-		<?php echo $form->textField($model,'CurrentStateId'); ?>
+		<?php echo $form->dropDownList($model,'CurrentStateId',CHtml::listData(State::model()->findAll(), 'StateId', 'StateName')); ?>
 		<?php echo $form->error($model,'CurrentStateId'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'CurrentCountryId'); ?>
-		<?php echo $form->textField($model,'CurrentCountryId'); ?>
+		<?php echo $form->dropDownList($model,'CurrentCountryId',CHtml::listData(Country::model()->findAll(), 'CountryId', 'CountryName')); ?>
 		<?php echo $form->error($model,'CurrentCountryId'); ?>
 	</div>
 
@@ -117,25 +136,25 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'PermaSuburbId'); ?>
-		<?php echo $form->textField($model,'PermaSuburbId'); ?>
+		<?php echo $form->dropDownList($model, 'PermaSuburbId',array(''=> 'Select Type') + CHtml::listData(Pickuppoint::model()->findAll(), 'PickupPointId', 'PickupPointName')); ?>
 		<?php echo $form->error($model,'PermaSuburbId'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'PermaCityId'); ?>
-		<?php echo $form->textField($model,'PermaCityId'); ?>
+		<?php echo $form->dropDownList($model,'PermaCityId',CHtml::listData(City::model()->findAll(), 'CityId', 'CityName')); ?>
 		<?php echo $form->error($model,'PermaCityId'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'PermaStateId'); ?>
-		<?php echo $form->textField($model,'PermaStateId'); ?>
+		<?php echo $form->dropDownList($model,'PermaStateId',CHtml::listData(State::model()->findAll(), 'StateId', 'StateName')); ?>
 		<?php echo $form->error($model,'PermaStateId'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'PermaCountryId'); ?>
-		<?php echo $form->textField($model,'PermaCountryId'); ?>
+		<?php echo $form->dropDownList($model,'PermaCountryId',CHtml::listData(Country::model()->findAll(), 'CountryId', 'CountryName')); ?>
 		<?php echo $form->error($model,'PermaCountryId'); ?>
 	</div>
 

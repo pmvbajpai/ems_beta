@@ -66,22 +66,50 @@ class EmployeeController extends Controller
 		{
 			$this->layout = false;
 		}
-		$model=				new Employee;
-		$employeeDetails =	new Employeedetails; 
+		$model				=	new Employee;
+		$employeeDetails	=	new Employeedetails; 
+		$userDetails		=	new User;
+		
+		
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Employee']))
+		if(isset($_POST['User']))
 		{
-			$model->attributes=$_POST['Employee'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->EmployeeId));
+			$emsUser = new EmsUser();
+			$_POST['User']['RoleId'] = Yii::app()->params['constants']['roles']['EMPLOYEE'];
+			$userDetails = $_POST['User'];
+			
+			$userId = $emsUser->saveUser($userDetails);
+	
+			if($userId)
+			{
+				$model->UserId = $userId;
+				$model->attributes = $_POST['Employee'];
+				/* echo "<pre>";
+				print_r($model->attributes);
+				die; */
+				if($model->save())
+				{
+					$employeeDetails->UserId = $userId;
+					$employeeDetails->attributes = $_POST['Employeedetails'];
+					
+					if($employeeDetails->save())
+					{
+						$this->redirect(array('view','id'=>$model->EmployeeId));
+					}
+				}
+				
+			}
 		}
+		
+	
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'				=>	$model,
 			'employeeDetails'	=>	$employeeDetails,
+			'userDetails'		=>	$userDetails,	
 		));
 	}
 

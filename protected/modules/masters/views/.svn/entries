@@ -1,7 +1,7 @@
 10
 
 dir
-53
+55
 file:///D:/SVN/ca-ems/protected/modules/masters/views
 file:///D:/SVN/ca-ems
 
@@ -29,22 +29,22 @@ has-props
 rolesResources
 dir
 
-feescomponentmaster
-dir
-
 classMaster
 dir
 
-subjectcomponent
+feescomponentmaster
 dir
 
 subjects
 dir
 
-default
+subjectcomponent
 dir
 
 roles
+dir
+
+default
 dir
 
 institute
