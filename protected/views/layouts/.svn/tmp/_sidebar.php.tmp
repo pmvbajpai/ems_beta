@@ -1,0 +1,45 @@
+<style>
+	.nav-header {font-weight:bold; font-size:16px;}
+</style>
+
+<div class="well" style="max-width: 340px; padding: 8px 0;">
+    <?php echo TbHtml::navList(array(
+        
+    	array('label' => 'Admin'),
+        array('label' => 'Institutes', 'url' => YII::app()->baseURL.'/masters/institute', 'active' => false),
+        array('label' => 'Academic Sessions', 'url' => YII::app()->baseURL.'/masters/academicsession'),
+        array('label' => 'Roles', 'url' => YII::app()->baseURL.'/masters/roles/admin'),
+        array('label' => 'Users', 'url' => '#'),
+        array('label' => 'User Docs', 'url' => '#'),
+        array('label' => 'Collection', 'url' => YII::app()->baseURL.'/masters/collection'),
+
+    	TbHtml::menuDivider(),
+    	array('label' => 'School'),
+        array('label' => 'Announcement', 'url' => YII::app()->baseURL.'/masters/announcements', 'active' => false),
+        array('label' => 'Notes', 'url' => '#'),
+
+    	TbHtml::menuDivider(),
+    	array('label' => 'Class'),
+    	array('label' => 'Subjects', 'url' => '#'),
+    	array('label' => 'Subject Components', 'url' => '#'),
+    	array('label' => 'Class Master', 'url' => '#'),
+    	array('label' => 'Exam Structure', 'url' => '#'),
+    	array('label' => 'Assign Class to Teacher', 'url' => '#'),
+
+    	TbHtml::menuDivider(),
+    	array('label' => 'Fee'),
+    	array('label' => 'Fee Components', 'url' => '#'),
+    	array('label' => 'Fee Rules', 'url' => '#'),
+    	array('label' => 'Fee Other Charges', 'url' => '#'),
+    	array('label' => 'Fee Structure', 'url' => '#'),
+
+    	TbHtml::menuDivider(),
+    	array('label' => 'Transport'),
+    	array('label' => 'Bus', 'url' => '#'),
+    	array('label' => 'Pickup Point', 'url' => '#'),
+    	array('label' => 'Bus Routes', 'url' => '#'),
+
+    	TbHtml::menuDivider(),
+        array('label' => 'Help', 'url' => '#'),
+    )); ?>
+</div>
