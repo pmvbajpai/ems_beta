@@ -1,15 +1,12 @@
 <?php
 
 /**
- * This is the model class for table "tblexammaster".
+ * This is the model class for table "tblclass".
  *
- * The followings are the available columns in table 'tblexammaster':
- * @property integer $ExamId
- * @property string $ExamName
- * @property string $ExamStartDate
- * @property string $ExamEndDate
- * @property integer $AcademicSessionId
- * @property integer $InstituteId
+ * The followings are the available columns in table 'tblclass':
+ * @property integer $ClassId
+ * @property string $ClassName
+ * @property string $ClassDisplayName
  * @property integer $Status
  * @property integer $SortOrder
  * @property string $DateCreated
@@ -17,17 +14,18 @@
  *
  * The followings are the available model relations:
  * @property Classexamassociation[] $classexamassociations
- * @property Academicsession $academicSession
- * @property Institute $institute
+ * @property Classfeestructure[] $classfeestructures
+ * @property Classsectionassociation[] $classsectionassociations
+ * @property Classsubjectassociation[] $classsubjectassociations
  */
-class Exammaster extends CActiveRecord
+class Class extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tblexammaster';
+		return 'tblclass';
 	}
 
 	/**
@@ -38,13 +36,13 @@ class Exammaster extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ExamName, AcademicSessionId, InstituteId', 'required'),
-			array('AcademicSessionId, InstituteId, Status, SortOrder', 'numerical', 'integerOnly'=>true),
-			array('ExamName', 'length', 'max'=>255),
-			array('ExamStartDate, ExamEndDate, DateCreated, DateUpdated', 'safe'),
+			array('Status, SortOrder', 'numerical', 'integerOnly'=>true),
+			array('ClassName', 'length', 'max'=>50),
+			array('ClassDisplayName', 'length', 'max'=>25),
+			array('DateCreated, DateUpdated', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('ExamId, ExamName, ExamStartDate, ExamEndDate, AcademicSessionId, InstituteId, Status, SortOrder, DateCreated, DateUpdated', 'safe', 'on'=>'search'),
+			array('ClassId, ClassName, ClassDisplayName, Status, SortOrder, DateCreated, DateUpdated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,9 +54,10 @@ class Exammaster extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'classexamassociations' => array(self::HAS_MANY, 'Classexamassociation', 'ExamId'),
-			'academicSession' => array(self::BELONGS_TO, 'Academicsession', 'AcademicSessionId'),
-			'institute' => array(self::BELONGS_TO, 'Institute', 'InstituteId'),
+			'classexamassociations' => array(self::HAS_MANY, 'Classexamassociation', 'ClassId'),
+			'classfeestructures' => array(self::HAS_MANY, 'Classfeestructure', 'ClassId'),
+			'classsectionassociations' => array(self::HAS_MANY, 'Classsectionassociation', 'ClassId'),
+			'classsubjectassociations' => array(self::HAS_MANY, 'Classsubjectassociation', 'ClassId'),
 		);
 	}
 
@@ -68,12 +67,9 @@ class Exammaster extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'ExamId' => 'Exam',
-			'ExamName' => 'Exam Name',
-			'ExamStartDate' => 'Exam Start Date',
-			'ExamEndDate' => 'Exam End Date',
-			'AcademicSessionId' => 'Academic Session',
-			'InstituteId' => 'Institute',
+			'ClassId' => 'Class',
+			'ClassName' => 'Class Name',
+			'ClassDisplayName' => 'Class Display Name',
 			'Status' => 'Status',
 			'SortOrder' => 'Sort Order',
 			'DateCreated' => 'Date Created',
@@ -99,12 +95,9 @@ class Exammaster extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('ExamId',$this->ExamId);
-		$criteria->compare('ExamName',$this->ExamName,true);
-		$criteria->compare('ExamStartDate',$this->ExamStartDate,true);
-		$criteria->compare('ExamEndDate',$this->ExamEndDate,true);
-		$criteria->compare('AcademicSessionId',$this->AcademicSessionId);
-		$criteria->compare('InstituteId',$this->InstituteId);
+		$criteria->compare('ClassId',$this->ClassId);
+		$criteria->compare('ClassName',$this->ClassName,true);
+		$criteria->compare('ClassDisplayName',$this->ClassDisplayName,true);
 		$criteria->compare('Status',$this->Status);
 		$criteria->compare('SortOrder',$this->SortOrder);
 		$criteria->compare('DateCreated',$this->DateCreated,true);
@@ -119,7 +112,7 @@ class Exammaster extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Exammaster the static model class
+	 * @return Class the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

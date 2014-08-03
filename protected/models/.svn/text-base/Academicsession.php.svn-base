@@ -42,7 +42,7 @@ class Academicsession extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('SessionName, SessionStartDate, SessionEndDate', 'required'),
+			array('SessionName, SessionStartDate, SessionEndDate, SortOrder, DateCreated, DateUpdated', 'required'),
 			array('SortOrder, Status', 'numerical', 'integerOnly'=>true),
 			array('SessionName', 'length', 'max'=>10),
 			// The following rule is used by search().

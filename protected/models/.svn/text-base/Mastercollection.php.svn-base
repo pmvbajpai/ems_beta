@@ -33,7 +33,7 @@ class Mastercollection extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('MasterCollectionTypeId, CollectionName, Description, Status', 'required'),
+			array('MasterCollectionTypeId, CollectionName, Description, Status, DateCreated, DateUpdated', 'required'),
 			array('MasterCollectionTypeId, Status', 'numerical', 'integerOnly'=>true),
 			array('CollectionName', 'length', 'max'=>50),
 			// The following rule is used by search().

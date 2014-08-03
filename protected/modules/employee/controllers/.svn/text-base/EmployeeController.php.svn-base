@@ -67,7 +67,7 @@ class EmployeeController extends Controller
 			$this->layout = false;
 		}
 		$model=				new Employee;
-		$employeeDetails =	new EmployeeDetails; 
+		$employeeDetails =	new Employeedetails; 
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);

@@ -37,7 +37,7 @@ class Pickuppoint extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('InstituteId, PickupPointName, Amount, ZipCode, Remarks, Status', 'required'),
+			array('InstituteId, PickupPointName, Amount, ZipCode, Remarks, Status, SortOrder, DateCreated, DateUpdated', 'required'),
 			array('InstituteId, Status, SortOrder', 'numerical', 'integerOnly'=>true),
 			array('Amount', 'numerical'),
 			array('PickupPointName, Remarks', 'length', 'max'=>255),

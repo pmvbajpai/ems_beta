@@ -39,7 +39,7 @@ class Classsectionassociation extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('ClassId, SectionId, InsituteId, AcademicSessionId', 'required'),
-			array('ClassId,  InsituteId, AcademicSessionId, Status', 'numerical', 'integerOnly'=>true),
+			array('ClassId, SectionId, InsituteId, AcademicSessionId, Status', 'numerical', 'integerOnly'=>true),
 			array('DateCreated, DateUpdated', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -58,7 +58,7 @@ class Classsectionassociation extends CActiveRecord
 			'classschedules' => array(self::HAS_MANY, 'Classschedule', 'ClassSectionAssociationId'),
 			'insitute' => array(self::BELONGS_TO, 'Institute', 'InsituteId'),
 			'academicSession' => array(self::BELONGS_TO, 'Academicsession', 'AcademicSessionId'),
-			'classmaster' => array(self::BELONGS_TO, 'MasterClass', 'ClassId'),
+			'class' => array(self::BELONGS_TO, 'Class', 'ClassId'),
 			'section' => array(self::BELONGS_TO, 'Section', 'SectionId'),
 		);
 	}
@@ -121,18 +121,5 @@ class Classsectionassociation extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-	public function beforeSave()
-	{
-		if($this->isNewRecord)
-		{
-			$this->DateCreated = new CDbExpression('NOW()');
-		}
-		else
-		{
-			$this->DateUpdated = new CDbExpression('NOW()');
-		}
-	
-		return parent::beforeSave();
 	}
 }

@@ -16,6 +16,7 @@
  * The followings are the available model relations:
  * @property Academicsession $academicSession
  * @property Institute $institute
+ * @property Feeotherchargesdetails[] $feeotherchargesdetails
  */
 class Feeothercharges extends CActiveRecord
 {
@@ -55,6 +56,7 @@ class Feeothercharges extends CActiveRecord
 		return array(
 			'academicSession' => array(self::BELONGS_TO, 'Academicsession', 'AcademicSessionId'),
 			'institute' => array(self::BELONGS_TO, 'Institute', 'InstituteId'),
+			'feeotherchargesdetails' => array(self::HAS_MANY, 'Feeotherchargesdetails', 'FeeOtherChargesId'),
 		);
 	}
 

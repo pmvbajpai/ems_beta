@@ -38,7 +38,7 @@ class Busroute extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('InstituteId, AcademicSessionId, RouteName, BusId, Status', 'required'),
+			array('InstituteId, AcademicSessionId, RouteName, BusId, Status, SortOrder, DateCreated, DateUpdated', 'required'),
 			array('InstituteId, AcademicSessionId, BusId, Status, SortOrder', 'numerical', 'integerOnly'=>true),
 			array('RouteName', 'length', 'max'=>50),
 			// The following rule is used by search().

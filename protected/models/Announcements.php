@@ -36,7 +36,7 @@ class Announcements extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('InstituteId, AcademicSessionId, Heading, Description, ExpiryDate, AnnouncementType,', 'required'),
+			array('InstituteId, AcademicSessionId, Heading, Description, ExpiryDate, AnnouncementType, DateCreated, DateUpdated', 'required'),
 			array('InstituteId, AcademicSessionId, AnnouncementType', 'numerical', 'integerOnly'=>true),
 			array('Heading', 'length', 'max'=>255),
 			// The following rule is used by search().

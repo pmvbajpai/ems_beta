@@ -60,7 +60,7 @@ class Studentdetails extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('UserId, DOB, StudentType, Gender, Religion, Category, CurrentAddress1, CurrentCityId, CurrentZipcode, CurrentStateId, CurrentCountryId, PermaAddress1, PermaCityId, PermaStateId, PermaCountryId, PermaZipcode, Mobile, DateofJoining', 'required'),
+			array('UserId, DOB, StudentType, Gender, Religion, Category, CurrentAddress1, CurrentCityId, CurrentZipcode, CurrentStateId, CurrentCountryId, PermaAddress1, PermaCityId, PermaStateId, PermaCountryId, PermaZipcode, Mobile, DateofJoining, DateCreated, DateUpdated', 'required'),
 			array('UserId, StudentType, Gender, Religion, Category, CurrentSuburbId, CurrentCityId, CurrentStateId, CurrentCountryId, PermaSuburbId, PermaCityId, PermaStateId, PermaCountryId, Status', 'numerical', 'integerOnly'=>true),
 			array('CurrentAddress1, CurrentAddress2, PermaAddress1, PermaAddress2, Email1, Email2', 'length', 'max'=>255),
 			array('CurrentZipcode, PermaZipcode', 'length', 'max'=>6),

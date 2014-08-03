@@ -45,11 +45,7 @@ class Institute extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
-	 * 
 	 */
-	
-	
-	
 	public function tableName()
 	{
 		return 'tblinstitute';
@@ -69,7 +65,6 @@ class Institute extends CActiveRecord
 			array('InstituteZipCode', 'length', 'max'=>6),
 			array('InstitutePhone1, InstitutePhone2, InsituteFax1, InstituteFax2', 'length', 'max'=>15),
 			array('InstituteAccreditionId', 'length', 'max'=>50),
-			//array('InstituteLogo', 'file', 'types'=>'jpg, gif, png'),
 			array('InstituteDescription, DateCreated, DateUpdated', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

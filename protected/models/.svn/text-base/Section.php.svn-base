@@ -110,17 +110,4 @@ class Section extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-	public function beforeSave()
-	{
-		if($this->isNewRecord)
-		{
-			$this->DateCreated = new CDbExpression('NOW()');
-		}
-		else
-		{
-			$this->DateUpdated = new CDbExpression('NOW()');
-		}
-	
-		return parent::beforeSave();
-	}
 }

@@ -37,7 +37,7 @@ class Bus extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('InstituteId, BusName, BusNumber, Capacity, Description', 'required'),
+			array('InstituteId, BusName, BusNumber, Capacity, Description, Status, SortOrder, DateCreated, DateUpdated', 'required'),
 			array('InstituteId, Capacity, Status, SortOrder', 'numerical', 'integerOnly'=>true),
 			array('BusName', 'length', 'max'=>50),
 			array('BusNumber', 'length', 'max'=>10),

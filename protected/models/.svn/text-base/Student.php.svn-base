@@ -36,7 +36,7 @@ class Student extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('UserId, ScholarNumber, FirstName, LastName', 'required'),
+			array('UserId, ScholarNumber, FirstName, LastName, DateCreated, DateUpdated', 'required'),
 			array('UserId', 'numerical', 'integerOnly'=>true),
 			array('ScholarNumber', 'length', 'max'=>25),
 			array('FirstName, MiddleName, LastName', 'length', 'max'=>50),
